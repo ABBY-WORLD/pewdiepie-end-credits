@@ -1,4 +1,4 @@
-# PewDiePie Happy Ever After
+# PewDiePie End Credits
 
 A static full-screen video credits page with recent PewDiePie videos in the background and a long pink credit roll on top.
 
@@ -17,3 +17,9 @@ http://127.0.0.1:4173/
 ```
 
 Click anywhere on the page to enable sound.
+
+Published site:
+
+```text
+https://abby-world.github.io/pewdiepie-end-credits/
+```
