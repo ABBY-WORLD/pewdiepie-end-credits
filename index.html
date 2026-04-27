@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PewDiePie Happy Ever After</title>
+    <meta
+      name="description"
+      content="Recent PewDiePie videos drifting behind an endless pink and yellow happy ever after credit roll."
+    >
+    <link rel="stylesheet" href="styles.css?v=16">
+  </head>
+  <body>
+    <main class="stage" aria-label="PewDiePie Happy Ever After">
+      <section class="video-shell" aria-label="Recent PewDiePie videos">
+        <div id="player" class="player"></div>
+        <div class="file-mode-message" id="fileModeMessage" aria-live="polite">
+          open this page through http://127.0.0.1:4173/ for the youtube video background
+        </div>
+        <div class="video-tint" aria-hidden="true"></div>
+      </section>
+
+      <section class="credits-layer" aria-label="Endless credits">
+        <div class="credits-mask">
+          <div class="credits-track" id="creditsTrack"></div>
+        </div>
+      </section>
+
+      <div class="loading" id="loading" aria-live="polite">Loading happy ever after...</div>
+    </main>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js?v=20"></script>
+  </body>
+</html>
