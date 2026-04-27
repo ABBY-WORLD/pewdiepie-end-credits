@@ -1,0 +1,225 @@
+:root {
+  color-scheme: dark;
+  --pink: #ff4fc8;
+  --yellow: #ffe66b;
+  --ink: #09070a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  background: var(--ink);
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 420px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 230, 107, 0.1), transparent 34%),
+    #050505;
+}
+
+.video-shell {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #050505;
+}
+
+.player {
+  border: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 177.7778vh;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 56.25vw;
+  transform: translate(-50%, -50%) scale(1.08);
+  filter: saturate(1.16) contrast(1.04) brightness(0.82);
+}
+
+.video-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 79, 200, 0.16), transparent 28%, transparent 72%, rgba(255, 230, 107, 0.15)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 38%, rgba(0, 0, 0, 0.72));
+}
+
+.file-mode-message {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: min(76vw, 520px);
+  transform: translate(-50%, -50%);
+  color: var(--pink);
+  display: none;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: clamp(11px, 1.5vw, 18px);
+  font-style: italic;
+  line-height: 1.25;
+  text-align: center;
+  text-shadow:
+    0 0 7px rgba(255, 79, 200, 0.56),
+    0 2px 12px rgba(0, 0, 0, 0.88);
+}
+
+.is-file-mode .file-mode-message {
+  display: block;
+}
+
+.credits-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.credits-mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  padding-top: 100vh;
+}
+
+.credits-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(18px, 3vh, 30px);
+  width: min(86vw, 620px);
+  margin: 0 auto;
+  padding-bottom: 120vh;
+  animation: credit-roll 430s linear infinite;
+  will-change: transform;
+}
+
+.credit-dedication {
+  color: var(--pink);
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: clamp(8px, 0.9vw, 12px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow:
+    0 0 5px rgba(255, 79, 200, 0.54),
+    0 1px 7px rgba(0, 0, 0, 0.92);
+}
+
+.credit-list {
+  display: grid;
+  gap: 4px;
+  width: min(100%, 460px);
+  color: var(--pink);
+  font-family: "Times New Roman", Times, Georgia, serif;
+  text-shadow:
+    0 0 4px rgba(255, 79, 200, 0.52),
+    0 1px 6px rgba(0, 0, 0, 0.94);
+}
+
+.credit-row {
+  display: grid;
+  grid-template-columns: minmax(74px, 0.95fr) minmax(0, 1.55fr);
+  column-gap: clamp(9px, 1.4vw, 18px);
+  align-items: baseline;
+}
+
+.credit-role,
+.credit-name {
+  color: var(--pink);
+  font-size: clamp(6px, 0.72vw, 10px);
+  line-height: 1.32;
+  letter-spacing: 0;
+}
+
+.credit-role {
+  justify-self: end;
+  font-style: italic;
+  font-weight: 400;
+  text-align: right;
+  text-transform: capitalize;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+.credit-name {
+  justify-self: start;
+  font-weight: 400;
+  text-align: left;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.loading {
+  position: absolute;
+  right: clamp(14px, 2vw, 28px);
+  bottom: clamp(14px, 2vw, 28px);
+  z-index: 3;
+  max-width: min(360px, calc(100vw - 28px));
+  color: rgba(255, 230, 107, 0.9);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px #000;
+  transition: opacity 350ms ease;
+}
+
+.loading.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes credit-roll {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@media (max-width: 680px) {
+  .credits-track {
+    width: 94vw;
+    animation-duration: 390s;
+  }
+
+  .credit-list {
+    width: min(100%, 350px);
+  }
+
+  .credit-row {
+    grid-template-columns: minmax(66px, 0.88fr) minmax(0, 1.5fr);
+    column-gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .credits-track {
+    animation-duration: 620s;
+  }
+}
