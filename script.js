@@ -190,7 +190,7 @@ function buildCredits() {
   const track = document.querySelector("#creditsTrack");
   const dedication = document.createElement("div");
   dedication.className = "credit-dedication";
-  dedication.textContent = "PewDiePie happily ever after";
+  dedication.innerHTML = "PewDiePie happily ever after <span>(click anywhere for audio)</span>";
 
   const list = document.createElement("div");
   list.className = "credit-list";
